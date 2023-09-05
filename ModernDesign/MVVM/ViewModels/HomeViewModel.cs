@@ -19,7 +19,7 @@ namespace MVVMSettings.MVVM.ViewModels
 
         public IEnumerable<StockListViewModel> StockData => _stockData;
 
-        public ICommand AddStockCommand { get; }
+        //public ICommand AddStockCommand { get; }
 
         public HomeViewModel(StocksList stocksList, NavigationStore navigationStore)
         {

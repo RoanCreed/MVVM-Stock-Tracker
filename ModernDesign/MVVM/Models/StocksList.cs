@@ -22,11 +22,6 @@ namespace MVVMSettings.MVVM.Models
             return StockData.GetAllStockData();
         }
 
-        public void AddStock(StockDataModel StockData)
-        {
-            _stockData.Add(StockData);
-        }
-
 
     }
 }

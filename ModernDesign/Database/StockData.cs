@@ -16,6 +16,24 @@ namespace ModernDesign.Database
             }
         }
 
+        public static void DeleteStockDataFromDb(StockDataModel stock)
+        {
+            using (var db = new StockContext())
+            {
+                db.Remove(stock);
+                db.SaveChanges();
+            }
+        }
+
+        public static void EditStockDataFromDb(StockDataModel stock)
+        {
+            using (var db = new StockContext())
+            {
+                db.Update(stock);
+                db.SaveChanges();
+            }
+        }
+
         public static List<StockDataModel> GetAllStockData()
         {
             using(var db = new StockContext())

@@ -25,7 +25,7 @@ namespace ModernDesign.Core
                 _addStockViewModel.ReturnInvestment
                 );
 
-            _stocksList.AddStock(stockData);
+            //_stocksList.AddStock(stockData);
             StockData.AddStockDataToDb(stockData);
         }
     }

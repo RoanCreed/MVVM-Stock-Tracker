@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:MVVMSettings.MVVM.Views"
              xmlns:viewModels="clr-namespace:MVVMSettings.MVVM.ViewModels"
              xmlns:views="clr-namespace:MVVMSettings.MVVM.Views"
+             xmlns:viewsModern="clr-namespace:ModernDesign.MVVM.Views"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent"
@@ -32,6 +34,11 @@
                 <DataTemplate DataType="{x:Type viewModels:AddStockViewModel}">
                     <views:AddStockView />
                 </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:EditStockViewModel}">
+                    <viewsModern:EditStockView />
+                </DataTemplate>
+                
             </Grid.Resources>
 
 

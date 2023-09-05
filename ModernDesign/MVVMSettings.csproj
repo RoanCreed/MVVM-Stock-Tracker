@@ -167,6 +167,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\DeleteStockCommand.cs" />
+    <Compile Include="Core\EditStockCommand.cs" />
     <Compile Include="Core\NavigationCommand.cs" />
     <Compile Include="Database\StockData.cs" />
     <Compile Include="Migrations\20230905112729_Initial.cs" />
@@ -175,6 +177,7 @@
     </Compile>
     <Compile Include="Migrations\StockContextModelSnapshot.cs" />
     <Compile Include="MVVM\Models\StockContext.cs" />
+    <Compile Include="MVVM\ViewModels\EditStockViewModel.cs" />
     <Compile Include="MVVM\Views\EditStockView.xaml.cs">
       <DependentUpon>EditStockView.xaml</DependentUpon>
     </Compile>
