@@ -1,4 +1,5 @@
-﻿using MVVMSettings.MVVM.Models;
+﻿using ModernDesign.Database;
+using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 
 namespace ModernDesign.Core
@@ -24,7 +25,8 @@ namespace ModernDesign.Core
                 _addStockViewModel.ReturnInvestment
                 );
 
-            _stocksList.AddStock(stockData);
+            //_stocksList.AddStock(stockData);
+            StockData.AddStockDataToDb(stockData);
         }
     }
 }
