@@ -10,7 +10,8 @@ namespace MVVMSettings.MVVM.ViewModels
         private readonly NavigationStore _navigationStore;
         public ICommand AddStockViewCommand { get; }
         public ICommand HomeViewCommand { get; }
-        public MainViewModel(NavigationStore navigationStore, Func<ViewModelBase> CreateHomeViewModel, Func<ViewModelBase> CreateAddStockViewModel)
+        public ICommand EditStockViewCommand { get; }
+        public MainViewModel(NavigationStore navigationStore, Func<ViewModelBase> CreateHomeViewModel, Func<ViewModelBase> CreateAddStockViewModel, Func<ViewModelBase> CreateEditStockViewModel)
         {
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
@@ -18,7 +19,9 @@ namespace MVVMSettings.MVVM.ViewModels
 
             HomeViewCommand = new NavigationCommand(navigationStore, CreateHomeViewModel);
             AddStockViewCommand = new NavigationCommand(navigationStore, CreateAddStockViewModel);
-            
+            EditStockViewCommand = new NavigationCommand(navigationStore, CreateEditStockViewModel);
+
+
         }
 
         private void OnCurrentViewModelChanged()

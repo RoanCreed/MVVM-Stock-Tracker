@@ -15,11 +15,11 @@ namespace MVVMSettings.MVVM.ViewModels
     {
         private StocksList _stocksList;
         private readonly ObservableCollection<StockListViewModel> _stockData;
-        private NavigationStore navigationStore;
+       
 
         public IEnumerable<StockListViewModel> StockData => _stockData;
 
-        public ICommand AddStockCommand { get; }
+        //public ICommand AddStockCommand { get; }
 
         public HomeViewModel(StocksList stocksList, NavigationStore navigationStore)
         {

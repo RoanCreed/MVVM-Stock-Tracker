@@ -4,119 +4,192 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ModernDesign.MVVM.Views"
-             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Margin" Value="15 0 0 0 "/>
-                </Style>
-            </StackPanel.Resources>
-            <TextBlock Text="Most Watched"
-               Foreground="White"
-               FontSize="20"
-               HorizontalAlignment="Left"
-               Margin="0 0 0 10"/>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal">
-                <Border Width="150" Height="150"
-                    Background="#844eff"
-                    CornerRadius="10"
-                    Margin="0 0 0 0"/>
+        <TextBlock Text="Edit Stocks"
+           Foreground="White"
+           FontSize="28"
+           HorizontalAlignment="Left"
+           Margin="0 0 0 10"/>
 
-                <Border Width="150" Height="150"
-                    Background="#4e99ff"
-                    CornerRadius="10"/>
+            <Border CornerRadius="10" Width="250"
+                Height="390" Grid.Row="1">
 
-                <Border Width="150" Height="150"
-                    Background="#4eff91"
-                    CornerRadius="10"/>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#5bc3ff" Offset="0.0"/>
+                        <GradientStop Color="#3aa0ff" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
-                <Border Width="150" Height="150"
-                    Background="#dcff4e"
-                    CornerRadius="10"/>
+                <ListView
+                    
+                    Margin="0 0 0 0"
+                    ItemsSource="{Binding StockData}"
+                    Background="Transparent"
+                    FontFamily="/Fonts/#Poppings"
+                    Padding="0 0 0 0"
+                    FontSize="20"
+                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    SelectedItem="{Binding SelectedItem}">
 
 
 
+                    <ListView.View>
+                        <GridView>
+
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Width" Value="250" />
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Foreground" Value="#111"/>
+
+
+
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+
+                            <GridViewColumn Header="Stock Name">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding StockName}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+
+
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </Border>
+
+
+
+
+
+
+
+        <Grid Grid.IsSharedSizeScope="True" 
+              Grid.Column="1" 
+              Grid.Row="1" 
+              Margin="20 0 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            
+
+            <Grid Grid.Row="1" Margin="0 25 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn" />
+                    <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn" />
+                    <ColumnDefinition Width="auto" SharedSizeGroup="ThirdColumn" />
+                </Grid.ColumnDefinitions>
+
+                
+
+                <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="0 0 0 0"
+            Text="Number of Shares" />
+                <TextBox
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="0 5 0 0"
+            Text="{Binding Shares, UpdateSourceTrigger=PropertyChanged}"  />
+
+                <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="10 0 0 0"
+            Text="Average Price" />
+                <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10 5 0 0"
+            Text="{Binding AvgBuyPrice, UpdateSourceTrigger=PropertyChanged}"  />
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0 10 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn" />
+                    <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Current Price" />
+                <TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0 5 0 0"
+                Text="{Binding CurrentBuyPrice, UpdateSourceTrigger=PropertyChanged}"  />
+
+                <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10 0 0 0"
+                Text="Return" />
+                <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="10 5 0 0"
+                Text="{Binding ReturnInvestment, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+
+
+            
+            <StackPanel
+                Grid.Row="4"
+                Margin="0 20 0 0"
+                Orientation="Horizontal">   
+                
+                <Button Command="{Binding EditStockCommand}" 
+                Content="Confirm Edit" 
+                FontSize="20"
+                Width="130"
+                Margin="0 0 20 0"/>
+
+                <Button Command="{Binding DeleteStockCommand}" 
+                    Content="Delete Stock" 
+                    FontSize="20"
+                    Width="130"/>
 
             </StackPanel>
+        </Grid>
 
 
-            <ListView
-                Grid.Row="0"
-                Margin="0 0 0 0"
-                ItemsSource="{Binding StockData}"
-                Background="Transparent"
-                FontFamily="/Fonts/#Poppings"
-                Foreground="White"
-                Padding="0 0 0 0"
-                FontSize="20"
-                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                ScrollViewer.VerticalScrollBarVisibility="Auto">
-
-
-
-                <ListView.View>
-                    <GridView>
-
-                        <GridView.ColumnHeaderContainerStyle>
-                            <Style TargetType="{x:Type GridViewColumnHeader}">
-                                <Setter Property="Width" Value="150" />
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="Foreground" Value="#111"/>
-
-
-
-                            </Style>
-                        </GridView.ColumnHeaderContainerStyle>
-
-                        <GridViewColumn Header="Stock Name">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text="{Binding StockName}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn Header="Shares">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Padding="0 0 40 0" Text="{Binding Shares}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn Header="Return">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Padding="0 0 40 0" Text="{Binding ReturnInvestment}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn Header="Average Price">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Padding="0 0 40 0" Text="{Binding AvgBuyPrice}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn Header="Current Price">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Padding="0 0 40 0" Text="{Binding CurrentBuyPrice}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-        </StackPanel>
-        
-        
     </Grid>
 </UserControl>

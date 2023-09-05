@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernDesign.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,12 +19,7 @@ namespace MVVMSettings.MVVM.Models
 
         public IEnumerable<StockDataModel> GetAllStockData() 
         { 
-            return _stockData; 
-        }
-
-        public void AddStock(StockDataModel StockData)
-        {
-            _stockData.Add(StockData);
+            return StockData.GetAllStockData();
         }
 
 
