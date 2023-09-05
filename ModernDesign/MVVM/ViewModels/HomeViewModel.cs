@@ -15,7 +15,7 @@ namespace MVVMSettings.MVVM.ViewModels
     {
         private StocksList _stocksList;
         private readonly ObservableCollection<StockListViewModel> _stockData;
-        private NavigationStore navigationStore;
+       
 
         public IEnumerable<StockListViewModel> StockData => _stockData;
 

@@ -18,7 +18,7 @@ namespace MVVMSettings
     {
         private readonly StocksList _stocksList;
         private readonly NavigationStore _navigationStore;
-        private readonly Func<ViewModelBase> _createViewModel;
+        
         public App()
         {
             _stocksList = new StocksList();

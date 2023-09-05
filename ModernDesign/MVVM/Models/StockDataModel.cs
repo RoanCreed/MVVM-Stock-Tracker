@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -18,7 +19,9 @@ namespace MVVMSettings.MVVM.Models
             CurrentBuyPrice = currentBuyPrice;
         }
 
+        [Key]
         public string StockName { get; set; }
+
         public int Shares { get; set; }
         public float ReturnInvestment { get; set; }
         public float AvgBuyPrice { get; set; }
