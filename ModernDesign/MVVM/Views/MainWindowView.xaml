@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="MVVMSettings.MVVM.Views.MainWindowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMSettings.MVVM.Views"
+             xmlns:viewModels="clr-namespace:MVVMSettings.MVVM.ViewModels"
+             xmlns:views="clr-namespace:MVVMSettings.MVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Transparent"
+             Foreground="White"
+             FontSize="18">
+
+
+    <Border Background="#272537"
+    CornerRadius="10">
+        
+        
+        
+        <Grid>
+
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type viewModels:MainViewModel}">
+                    <views:MainWindowView />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+                    <views:HomeView />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:AddStockViewModel}">
+                    <views:AddStockView />
+                </DataTemplate>
+            </Grid.Resources>
+
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Text="Stock Investments Tracker"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Foreground="White"
+               FontSize="26"
+               Margin="20 0 0 0"
+               FontFamily="/Fonts/#Poppings"
+               Grid.Column="1"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                     Height="50"
+                     Foreground="White"
+                     FontSize="14"
+                     Style="{StaticResource MenuButtonTheme}"
+                     IsChecked="True"
+                     Command="{Binding HomeViewCommand}"/>
+
+                <RadioButton Content="Add Stocks"
+                     Height="50"
+                     Foreground="White"
+                     FontSize="14"
+                     Style="{StaticResource MenuButtonTheme}"
+                     Command="{Binding AddStockViewCommand}"/>
+
+                <RadioButton Content="Edit Stocks"
+                     Height="50"
+                     Foreground="White"
+                     FontSize="14"
+                     Style="{StaticResource MenuButtonTheme}"
+                     Command="{Binding EditStockViewCommand}"/>
+
+                <RadioButton Content="Indepth Analysis"
+                     Height="50"
+                     Foreground="White"
+                     FontSize="14"
+                     Style="{StaticResource MenuButtonTheme}"
+                     Command="{Binding EditStockViewCommand}" />
+
+            </StackPanel>
+
+            <TextBox Width="180"
+             Height="40"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Center"
+             Grid.Column="0"
+             Style="{StaticResource SearchTextBox}"/>
+
+
+            <ContentControl Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10"
+                    Content="{Binding CurrentViewModel}"/>
+
+        </Grid>
+    </Border>
+</UserControl>
