@@ -122,7 +122,7 @@ namespace MVVMSettings.MVVM.ViewModels
 
         private void UpdateTextboxes(StockListViewModel SelectedItem)
         {
-            if(SelectedItem != null)    //fix this bug (Should not try and reselect the list item after coming back from editing)
+            if(SelectedItem != null)
             {
                 StockName = SelectedItem.StockName;
                 Shares = int.Parse(SelectedItem.Shares);
