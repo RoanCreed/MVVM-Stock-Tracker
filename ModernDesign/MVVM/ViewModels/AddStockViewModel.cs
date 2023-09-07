@@ -38,19 +38,7 @@ namespace MVVMSettings.MVVM.ViewModels
             }
         }
 
-        private float _returnInvestment;
-        public float ReturnInvestment
-        {
-            get
-            {
-                return _returnInvestment;
-            }
-            set
-            {
-                _returnInvestment = value;
-                OnPropertyChanged(nameof(ReturnInvestment));
-            }
-        }
+        
 
         private float _avgBuyPrice;
         public float AvgBuyPrice
@@ -87,8 +75,8 @@ namespace MVVMSettings.MVVM.ViewModels
 
         public AddStockViewModel(StocksList stocksList, NavigationStore navigationStore)
         {
-            AddStockCommand = new AddStockCommand(this, stocksList);
-
+            
+                AddStockCommand = new AddStockCommand(this, stocksList);
         }
 
         

@@ -34,19 +34,39 @@ namespace ModernDesign.Database
 
         public static void DeleteStockDataFromDb(StockDataModel stock)
         {
-            using (var db = new StockContext())
+            try
             {
-                db.Remove(stock);
-                db.SaveChanges();
+                if (CheckInput(stock))
+                {
+                    using (var db = new StockContext())
+                    {
+                        db.Remove(stock);
+                        db.SaveChanges();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
             }
         }
 
         public static void EditStockDataFromDb(StockDataModel stock)
         {
-            using (var db = new StockContext())
+            try
             {
-                db.Update(stock);
-                db.SaveChanges();
+                if (CheckInput(stock))
+                {
+                    using (var db = new StockContext())
+                    {
+                        db.Update(stock);
+                        db.SaveChanges();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
             }
         }
 

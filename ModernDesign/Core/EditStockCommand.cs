@@ -1,4 +1,5 @@
 ﻿using ModernDesign.Database;
+using ModernDesign.Exceptions;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
@@ -23,18 +24,38 @@ namespace ModernDesign.Core
 
         public override void Execute(object parameter)
         {
-            StockDataModel stockData = new StockDataModel(
-                _editStockViewModel.StockName,
-                _editStockViewModel.Shares,
-                _editStockViewModel.AvgBuyPrice,
-                _editStockViewModel.CurrentBuyPrice,
-                _editStockViewModel.ReturnInvestment
-                );
+            try
+            {
+                if (_editStockViewModel.SelectedItem != null)
+                {
+                    float initalInvestment = _editStockViewModel.Shares * _editStockViewModel.AvgBuyPrice;
+                    float currentInvestment = _editStockViewModel.Shares * _editStockViewModel.CurrentBuyPrice;
 
+                    float returnInvestment = currentInvestment - initalInvestment;
+
+                    StockDataModel stockData = new StockDataModel(
+                        _editStockViewModel.StockName.ToUpper(),
+                        _editStockViewModel.Shares,
+                        returnInvestment,
+                        _editStockViewModel.AvgBuyPrice,
+                        _editStockViewModel.CurrentBuyPrice
+                        );
+
+
+                    StockData.EditStockDataFromDb(stockData);
+                    _editStockViewModel.UpdateStocks();
+                }
+                else 
+                { 
+                    throw new NoSelectedItemException(); 
+                }
+            }
+            catch (Exception)
+            { 
+                
+            }
             
-
-            StockData.EditStockDataFromDb(stockData);
-            _editStockViewModel.UpdateStocks();
+            
 
         }
     }
