@@ -172,6 +172,7 @@
     <Compile Include="Core\NavigationCommand.cs" />
     <Compile Include="Database\StockData.cs" />
     <Compile Include="Exceptions\InputValidationException.cs" />
+    <Compile Include="Exceptions\NoSelectedItemException.cs" />
     <Compile Include="Migrations\20230905112729_Initial.cs" />
     <Compile Include="Migrations\20230905112729_Initial.designer.cs">
       <DependentUpon>20230905112729_Initial.cs</DependentUpon>
@@ -186,6 +187,8 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Validation\FloatValidationRule.cs" />
+    <Compile Include="Validation\StockNameValidationRule.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -225,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Theme\TextBoxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBoxValidationTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

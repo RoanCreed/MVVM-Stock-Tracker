@@ -25,7 +25,7 @@ namespace ModernDesign.Core
                 float returnInvestment = currentInvestment - initalInvestment;
 
                 StockDataModel stockData = new StockDataModel(
-                    _addStockViewModel.StockName,
+                    _addStockViewModel.StockName.ToUpper(),
                     _addStockViewModel.Shares,
                     returnInvestment,
                     _addStockViewModel.AvgBuyPrice,
