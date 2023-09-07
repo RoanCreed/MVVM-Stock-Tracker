@@ -14,7 +14,7 @@ namespace ModernDesign.Exceptions
         
         public InputValidationException()
         {
-            MessageBox.Show("All fields must have the correct type and not be 0!");
+            MessageBox.Show("All fields must have the correct type and not be 0 or less!");
         }
 
         public InputValidationException(string message) : base(message)
