@@ -171,6 +171,7 @@
     <Compile Include="Core\EditStockCommand.cs" />
     <Compile Include="Core\NavigationCommand.cs" />
     <Compile Include="Database\StockData.cs" />
+    <Compile Include="Exceptions\InputValidationException.cs" />
     <Compile Include="Migrations\20230905112729_Initial.cs" />
     <Compile Include="Migrations\20230905112729_Initial.designer.cs">
       <DependentUpon>20230905112729_Initial.cs</DependentUpon>
