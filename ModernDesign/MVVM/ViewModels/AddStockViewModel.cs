@@ -1,6 +1,7 @@
 ﻿using ModernDesign.Core;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MVVMSettings.MVVM.ViewModels
@@ -74,6 +75,7 @@ namespace MVVMSettings.MVVM.ViewModels
             }
             set
             {
+                               
                 _currentBuyPrice = value;
                 OnPropertyChanged(nameof(CurrentBuyPrice));
             }
