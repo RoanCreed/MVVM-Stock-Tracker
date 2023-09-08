@@ -69,6 +69,17 @@ namespace MVVMSettings.MVVM.ViewModels
             }
         }
 
+        private StockListViewModel _selectedItem;
+        public StockListViewModel SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
+
         public ICommand AddStockCommand { get; }
 
 

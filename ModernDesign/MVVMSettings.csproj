@@ -173,6 +173,7 @@
     <Compile Include="Database\StockData.cs" />
     <Compile Include="Exceptions\InputValidationException.cs" />
     <Compile Include="Exceptions\NoSelectedItemException.cs" />
+    <Compile Include="Exceptions\StockAlreadyExsistsException.cs" />
     <Compile Include="Migrations\20230905112729_Initial.cs" />
     <Compile Include="Migrations\20230905112729_Initial.designer.cs">
       <DependentUpon>20230905112729_Initial.cs</DependentUpon>
@@ -277,9 +278,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Melons_Avatar_no_Background.png" />
   </ItemGroup>
