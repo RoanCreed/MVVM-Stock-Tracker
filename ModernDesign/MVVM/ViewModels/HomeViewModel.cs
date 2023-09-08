@@ -15,7 +15,22 @@ namespace MVVMSettings.MVVM.ViewModels
     {
         private StocksList _stocksList;
         private readonly ObservableCollection<StockListViewModel> _stockData;
-       
+
+        private float _totalReturn;
+        public float TotalReturn
+        {
+            get
+            {
+                return _totalReturn;
+            }
+            set
+            {
+
+                _totalReturn = value;
+                OnPropertyChanged(nameof(TotalReturn));
+            }
+        }
+
 
         public IEnumerable<StockListViewModel> StockData => _stockData;
 
@@ -45,7 +60,10 @@ namespace MVVMSettings.MVVM.ViewModels
             {
                 StockListViewModel StockDataModel = new StockListViewModel(stock);
                 _stockData.Add(StockDataModel);
+                _totalReturn += stock.ReturnInvestment;
             }
+
+            OnPropertyChanged(nameof(TotalReturn));
         }
     }
 }
