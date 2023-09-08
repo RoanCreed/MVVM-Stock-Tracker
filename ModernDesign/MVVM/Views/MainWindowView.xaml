@@ -86,21 +86,11 @@
                      Style="{StaticResource MenuButtonTheme}"
                      Command="{Binding EditStockViewCommand}"/>
 
-                <RadioButton Content="Indepth Analysis"
-                     Height="50"
-                     Foreground="White"
-                     FontSize="14"
-                     Style="{StaticResource MenuButtonTheme}"
-                     Command="{Binding EditStockViewCommand}" />
+                
 
             </StackPanel>
 
-            <TextBox Width="180"
-             Height="40"
-             VerticalAlignment="Center"
-             HorizontalAlignment="Center"
-             Grid.Column="0"
-             Style="{StaticResource SearchTextBox}"/>
+            
 
 
             <ContentControl Grid.Row="1"

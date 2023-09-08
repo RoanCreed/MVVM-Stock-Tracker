@@ -19,8 +19,17 @@ namespace ModernDesign.Database
                 {
                     using (var db = new StockContext())
                     {
-                        db.Add(stock);
-                        db.SaveChanges();
+                        if (!db.Stocks.Contains(stock))
+                        {
+                            db.Add(stock);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            db.SaveChanges();
+                            throw new StockAlreadyExsistsException();
+                        }
+                        
                     }
                 }
 

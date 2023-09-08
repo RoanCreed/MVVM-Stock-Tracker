@@ -44,7 +44,8 @@
                             Padding="0 0 0 0"
                             FontSize="20"
                             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto">     
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        FontWeight="SemiBold">     
                         
                         
 
@@ -149,29 +150,80 @@
                     <Setter Property="Margin" Value="15 0 0 0 "/>
                 </Style>
             </StackPanel.Resources>
-            <TextBlock Text="Most Watched"
+            <TextBlock Text="Summary"
            Foreground="White"
            FontSize="20"
            HorizontalAlignment="Left"
            Margin="0 0 0 10"/>
 
             <StackPanel Orientation="Horizontal">
-                <Border Width="150" Height="150"
+                
+                <Border Width="180" Height="140"
                         Background="#844eff"
                         CornerRadius="10"
-                        Margin="0 0 0 0"/>
+                        Margin="0 0 0 0">
+                    <StackPanel>
+                        <TextBlock Text="Total return:"
+                               FontSize="20"
+                               Foreground="White"
+                               FontFamily="/Fonts/#Poppings"
+                               Margin="10 10 0 0"
+                                   FontWeight="SemiBold"/>
 
-                <Border Width="150" Height="150"
+                        <TextBlock Text="{Binding TotalReturn}"
+                               FontSize="24"
+                               Foreground="#F3FF00"
+                               FontFamily="/Fonts/#Poppings"
+                               HorizontalAlignment="Center"
+                               FontWeight="SemiBold"
+                                   Margin="0 5 0 0"/>
+                    </StackPanel>
+                    
+                </Border>
+
+                <Border Width="180" Height="140"
                         Background="#4e99ff"
-                        CornerRadius="10"/>
+                        CornerRadius="10">
+                    <StackPanel>
+                        <TextBlock Text="Hot Stocks:"
+                           FontSize="20"
+                           Foreground="White"
+                           FontFamily="/Fonts/#Poppings"
+                           Margin="10 10 0 0"
+                                   FontWeight="SemiBold"/>
 
-                <Border Width="150" Height="150"
+                        <TextBlock Text="AAPL&#x0a;TSLA"
+                           FontSize="24"
+                           Foreground="#F3FF00"
+                           FontFamily="/Fonts/#Poppings"
+                           HorizontalAlignment="Center"
+                                   Margin="0 5 0 0"
+                                   FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="180" Height="140"
                         Background="#4eff91"
-                        CornerRadius="10"/>
+                        CornerRadius="10">
+                    <StackPanel>
+                        <TextBlock Text="Options:"
+                               FontSize="20"
+                               Foreground="#707B82"
+                               FontFamily="/Fonts/#Poppings"
+                               Margin="10 10 0 0"
+                                       FontWeight="SemiBold"/>
 
-                <Border Width="150" Height="150"
-                        Background="#dcff4e"
-                        CornerRadius="10"/>
+                        <TextBlock Text="Calls+&#x0a;Puts -"
+                               FontSize="24"
+                               Foreground="#D37203"
+                               FontFamily="/Fonts/#Poppings"
+                               HorizontalAlignment="Center"
+                                       Margin="0 5 0 0"
+                                       FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Border>
+
+                
                 
                 
 
