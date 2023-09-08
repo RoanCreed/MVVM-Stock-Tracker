@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMSettings", "ModernDesign\MVVMSettings.csproj", "{E186BA97-EA7A-4018-B767-31B8DC4A1291}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMTests", "MVVMTests\MVVMTests.csproj", "{19D0A8FD-6E41-4635-ADF4-C3F6406480D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E186BA97-EA7A-4018-B767-31B8DC4A1291}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E186BA97-EA7A-4018-B767-31B8DC4A1291}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E186BA97-EA7A-4018-B767-31B8DC4A1291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D0A8FD-6E41-4635-ADF4-C3F6406480D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D0A8FD-6E41-4635-ADF4-C3F6406480D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D0A8FD-6E41-4635-ADF4-C3F6406480D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D0A8FD-6E41-4635-ADF4-C3F6406480D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
