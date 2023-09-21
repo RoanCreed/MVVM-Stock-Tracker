@@ -1,5 +1,6 @@
 ﻿using ModernDesign.Core;
 using ModernDesign.Exceptions;
+using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using System;
@@ -98,15 +99,16 @@ namespace MVVMSettings.MVVM.ViewModels
         public ICommand DeleteStockCommand { get; }
 
 
-       
+        public GlobalMessageViewModel GlobalMessageViewModel { get; }
 
-        public EditStockViewModel(StocksList stocksList, NavigationStore navigationStore)
+        public EditStockViewModel(StocksList stocksList, NavigationStore navigationStore, MessageStore messageStore, GlobalMessageViewModel globalMessageViewModel)
         {
             _stocksList = stocksList;
             _stockData = new ObservableCollection<StockListViewModel>();
-                       
-            EditStockCommand = new EditStockCommand(this, stocksList);
-            DeleteStockCommand = new DeleteStockCommand(this);
+            GlobalMessageViewModel = globalMessageViewModel;
+
+            EditStockCommand = new EditStockCommand(this, stocksList, messageStore);
+            DeleteStockCommand = new DeleteStockCommand(this, messageStore);
             
             UpdateStocks();
 

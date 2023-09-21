@@ -1,4 +1,5 @@
 ﻿using ModernDesign.Core;
+using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using System;
 using System.Windows.Input;
@@ -11,11 +12,15 @@ namespace MVVMSettings.MVVM.ViewModels
         public ICommand AddStockViewCommand { get; }
         public ICommand HomeViewCommand { get; }
         public ICommand EditStockViewCommand { get; }
-        public MainViewModel(NavigationStore navigationStore, Func<ViewModelBase> CreateHomeViewModel, Func<ViewModelBase> CreateAddStockViewModel, Func<ViewModelBase> CreateEditStockViewModel)
+
+        public GlobalMessageViewModel GlobalMessageViewModel { get; }
+
+        public MainViewModel(NavigationStore navigationStore, GlobalMessageViewModel globalMessageViewModel, Func<ViewModelBase> CreateHomeViewModel, Func<ViewModelBase> CreateAddStockViewModel, Func<ViewModelBase> CreateEditStockViewModel)
         {
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-
+            GlobalMessageViewModel = globalMessageViewModel;
+           
 
             HomeViewCommand = new NavigationCommand(navigationStore, CreateHomeViewModel);
             AddStockViewCommand = new NavigationCommand(navigationStore, CreateAddStockViewModel);

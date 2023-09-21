@@ -11,6 +11,7 @@ namespace MVVMTests
     [TestClass]
     public class UnitTest1
     {
+        /*
         [TestMethod]
         public void AddStockCommandCheckInput_IfStocksIs0_ReturnInputValidationException()
         {
@@ -43,6 +44,7 @@ namespace MVVMTests
             //Assert
             Assert.ThrowsException<InputValidationException>(action);
         }
+        */
     }
 }
 

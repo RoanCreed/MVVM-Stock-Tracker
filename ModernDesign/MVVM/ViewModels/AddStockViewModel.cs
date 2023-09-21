@@ -1,4 +1,5 @@
 ﻿using ModernDesign.Core;
+using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using System.Windows;
@@ -82,12 +83,12 @@ namespace MVVMSettings.MVVM.ViewModels
 
         public ICommand AddStockCommand { get; }
 
+        public GlobalMessageViewModel GlobalMessageViewModel { get; }
 
-
-        public AddStockViewModel(StocksList stocksList, NavigationStore navigationStore)
+        public AddStockViewModel(StocksList stocksList, NavigationStore navigationStore, MessageStore messageStore, GlobalMessageViewModel globalMessageViewModel)
         {
-            
-                AddStockCommand = new AddStockCommand(this, stocksList);
+            GlobalMessageViewModel = globalMessageViewModel;
+            AddStockCommand = new AddStockCommand(this, stocksList, messageStore);
         }
 
         

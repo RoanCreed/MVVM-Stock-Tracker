@@ -17,7 +17,7 @@ namespace MVVMSettings.MVVM.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        
 
-
-            }
+    }
 }

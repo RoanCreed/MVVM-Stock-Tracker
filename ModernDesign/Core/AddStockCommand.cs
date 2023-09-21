@@ -1,5 +1,6 @@
 ﻿using ModernDesign.Database;
 using ModernDesign.Exceptions;
+using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
@@ -10,11 +11,13 @@ namespace ModernDesign.Core
     {
         private readonly AddStockViewModel _addStockViewModel;
         private readonly StocksList _stocksList;
+        private readonly MessageStore _messageStore;
 
-        public AddStockCommand(AddStockViewModel addStockViewModel, StocksList stocksList)
+        public AddStockCommand(AddStockViewModel addStockViewModel, StocksList stocksList, MessageStore messageStore)
         {
             _addStockViewModel = addStockViewModel;
             _stocksList = stocksList;
+            _messageStore = messageStore;
         }
 
         public override void Execute(object parameter)
@@ -45,7 +48,7 @@ namespace ModernDesign.Core
             }
             catch (Exception)
             {
-
+                _messageStore.SetCurrentMessage("Input validation failed", MessageType.Error);
             }
 
         }
@@ -60,6 +63,7 @@ namespace ModernDesign.Core
                 )
 
             {
+                
                 throw new InputValidationException();
             }
             else

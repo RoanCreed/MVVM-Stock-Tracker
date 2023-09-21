@@ -181,12 +181,17 @@
     <Compile Include="Migrations\StockContextModelSnapshot.cs" />
     <Compile Include="MVVM\Models\StockContext.cs" />
     <Compile Include="MVVM\ViewModels\EditStockViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\GlobalMessageViewModel.cs" />
     <Compile Include="MVVM\Views\EditStockView.xaml.cs">
       <DependentUpon>EditStockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\GlobalMessageBanner.xaml.cs">
+      <DependentUpon>GlobalMessageBanner.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Stores\MessageStore.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="Validation\FloatValidationRule.cs" />
     <Compile Include="Validation\StockNameValidationRule.cs" />
@@ -209,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\EditStockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\GlobalMessageBanner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

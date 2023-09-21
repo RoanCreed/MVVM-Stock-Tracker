@@ -12,7 +12,7 @@ namespace ModernDesign.Exceptions
     {
         public NoSelectedItemException()
         {
-            MessageBox.Show("Must select a stock");
+            //MessageBox.Show("Must select a stock");
         }
 
         public NoSelectedItemException(string message) : base(message)
