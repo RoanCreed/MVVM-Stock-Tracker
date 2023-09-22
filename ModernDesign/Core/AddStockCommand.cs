@@ -10,13 +10,13 @@ namespace ModernDesign.Core
     public class AddStockCommand : CommandBase
     {
         private readonly AddStockViewModel _addStockViewModel;
-        private readonly StocksList _stocksList;
+        
         private readonly MessageStore _messageStore;
 
-        public AddStockCommand(AddStockViewModel addStockViewModel, StocksList stocksList, MessageStore messageStore)
+        public AddStockCommand(AddStockViewModel addStockViewModel, MessageStore messageStore)
         {
             _addStockViewModel = addStockViewModel;
-            _stocksList = stocksList;
+            
             _messageStore = messageStore;
         }
 
@@ -70,6 +70,18 @@ namespace ModernDesign.Core
             {
                 return true;
             }
+        }
+
+        public static bool CheckIsString(string stockName)
+        {
+            foreach (char c in stockName)
+            {
+                if (!char.IsLetter(c))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

@@ -107,7 +107,7 @@ namespace MVVMSettings.MVVM.ViewModels
             _stockData = new ObservableCollection<StockListViewModel>();
             GlobalMessageViewModel = globalMessageViewModel;
 
-            EditStockCommand = new EditStockCommand(this, stocksList, messageStore);
+            EditStockCommand = new EditStockCommand(this, messageStore);
             DeleteStockCommand = new DeleteStockCommand(this, messageStore);
             
             UpdateStocks();

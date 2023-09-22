@@ -15,13 +15,13 @@ namespace ModernDesign.Core
     {
 
         private readonly EditStockViewModel _editStockViewModel;
-        private readonly StocksList _stocksList;
+        
         private readonly MessageStore _messageStore;
 
-        public EditStockCommand(EditStockViewModel editStockViewModel, StocksList stocksList, MessageStore messageStore)
+        public EditStockCommand(EditStockViewModel editStockViewModel, MessageStore messageStore)
         {
             _editStockViewModel = editStockViewModel;
-            _stocksList = stocksList;
+            
             _messageStore = messageStore;
         }
 

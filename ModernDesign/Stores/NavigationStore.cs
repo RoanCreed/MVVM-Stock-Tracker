@@ -1,6 +1,7 @@
 ﻿using MVVMSettings.MVVM.ViewModels;
 using System;
 
+
 namespace ModernDesign.Stores
 {
     public class NavigationStore

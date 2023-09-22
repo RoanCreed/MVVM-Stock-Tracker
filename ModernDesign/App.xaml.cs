@@ -47,7 +47,7 @@ namespace MVVMSettings
 
         private HomeViewModel CreateHomeViewModel()
         {
-            return new HomeViewModel(_stocksList, _navigationStore, _messageStore, new GlobalMessageViewModel(_messageStore));
+            return new HomeViewModel(_stocksList);
         }
 
         private EditStockViewModel CreateEditStockViewModel()
@@ -57,7 +57,7 @@ namespace MVVMSettings
 
         private AddStockViewModel CreateAddStockViewModel()
         {
-            return new AddStockViewModel(_stocksList, _navigationStore, _messageStore, new GlobalMessageViewModel(_messageStore));
+            return new AddStockViewModel(_navigationStore, _messageStore, new GlobalMessageViewModel(_messageStore));
         }
 
         private GlobalMessageViewModel CreateGlobalMessageViewModel()

@@ -50,7 +50,7 @@ namespace ModernDesign.Stores
             CurrentMessageType = messageType;
             CurrentMessage = message;
 
-            Timer timer = new Timer(ClearCurrentMessage, null, 1500, Timeout.Infinite);
+            Timer timer = new Timer(ClearCurrentMessage, null, 1300, Timeout.Infinite);
         }
 
         public void ClearCurrentMessage(object state)
