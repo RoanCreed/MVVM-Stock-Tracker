@@ -37,7 +37,7 @@ namespace MVVMTests
         public void AddStockCommandCheckInput_IfAvgPriceIs0_ReturnInputValidationException()
         {
             //Arrange
-            AddStockViewModel stock = new AddStockViewModel(new ModernDesign.Stores.NavigationStore(), new MessageStore(), new GlobalMessageViewModel(new MessageStore()));
+            AddStockViewModel stock = new AddStockViewModel(new NavigationStore(), new MessageStore(), new GlobalMessageViewModel(new MessageStore()));
             //Act
             Action action = () => AddStockCommand.CheckInput(stock);
             //Assert
@@ -48,7 +48,7 @@ namespace MVVMTests
         public void AddStockCommandCheckInput_IfCurrentPriceIs0_ReturnInputValidationException()
         {
             //Arrange
-            AddStockViewModel stock = new AddStockViewModel(new ModernDesign.Stores.NavigationStore(), new MessageStore(), new GlobalMessageViewModel(new MessageStore()));
+            AddStockViewModel stock = new AddStockViewModel(new NavigationStore(), new MessageStore(), new GlobalMessageViewModel(new MessageStore()));
             //Act
             Action action = () => AddStockCommand.CheckInput(stock);
             //Assert

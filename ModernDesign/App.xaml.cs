@@ -37,7 +37,7 @@ namespace MVVMSettings
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore, new GlobalMessageViewModel(_messageStore), CreateHomeViewModel, CreateAddStockViewModel, CreateEditStockViewModel)
+                DataContext = new MainViewModel(_navigationStore, CreateGlobalMessageViewModel(), CreateHomeViewModel, CreateAddStockViewModel, CreateEditStockViewModel)
             };
             MainWindow.Show();
 
@@ -52,12 +52,12 @@ namespace MVVMSettings
 
         private EditStockViewModel CreateEditStockViewModel()
         {
-            return new EditStockViewModel(_stocksList, _navigationStore, _messageStore, new GlobalMessageViewModel(_messageStore));
+            return new EditStockViewModel(_stocksList, _navigationStore, _messageStore, CreateGlobalMessageViewModel());
         }
 
         private AddStockViewModel CreateAddStockViewModel()
         {
-            return new AddStockViewModel(_navigationStore, _messageStore, new GlobalMessageViewModel(_messageStore));
+            return new AddStockViewModel(_navigationStore, _messageStore, CreateGlobalMessageViewModel());
         }
 
         private GlobalMessageViewModel CreateGlobalMessageViewModel()

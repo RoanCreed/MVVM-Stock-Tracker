@@ -10,24 +10,27 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}">
-        <Grid.Style>
-            <Style TargetType="Grid">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding MessageType}" Value="Status">
-                        <Setter Property="Background" Value="Green"/>
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding MessageType}" Value="Error">
-                        <Setter Property="Background" Value="Red"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Grid.Style>
-        
+
+
         <TextBlock HorizontalAlignment="Left" 
                    Text="{Binding Message}" 
-                   Foreground="White"
+                   FontSize="14">
                    
-                   FontSize="14"
-                   />
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding MessageType}" Value="Status">
+                            <Setter Property="Foreground" Value="#05a615"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding MessageType}" Value="Error">
+                            <Setter Property="Foreground" Value="#d60d1e"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+            
+            
+        </TextBlock>
+
     </Grid>
 </UserControl>
