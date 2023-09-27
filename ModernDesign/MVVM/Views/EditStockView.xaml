@@ -286,7 +286,7 @@
             
             <StackPanel Grid.Row="6">
                 <local:GlobalMessageBanner
-                    Margin="20 20 0 0"
+                    Margin="10 20 0 0"
                     DataContext="{Binding GlobalMessageViewModel}" 
                     HorizontalAlignment="Left"
                     />

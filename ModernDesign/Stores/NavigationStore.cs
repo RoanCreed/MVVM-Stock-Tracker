@@ -8,6 +8,7 @@ namespace ModernDesign.Stores
     {
         private ViewModelBase _currentViewModel;
 
+       
         public ViewModelBase CurrentViewModel
         {
             get => _currentViewModel;

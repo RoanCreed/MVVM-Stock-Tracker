@@ -10,7 +10,7 @@
     </UserControl.Resources>
     <Grid Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}">
 
-        <Border CornerRadius="8">
+        <Border CornerRadius="4">
 
             <Border.Style>
                 <Style TargetType="Border">

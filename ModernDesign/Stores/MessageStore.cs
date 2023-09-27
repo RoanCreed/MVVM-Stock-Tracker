@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModernDesign.Stores
 {
+    
     public enum MessageType
     {
         Status,
@@ -50,13 +51,14 @@ namespace ModernDesign.Stores
             CurrentMessageType = messageType;
             CurrentMessage = message;
 
-            Timer timer = new Timer(ClearCurrentMessage, null, 1300, Timeout.Infinite);
+            Task.Delay(new TimeSpan(0, 0, 0, 1, 500)).ContinueWith(o => { ClearCurrentMessage(); });
+
         }
 
-        public void ClearCurrentMessage(object state)
+
+        public void ClearCurrentMessage()
         {
             CurrentMessage = string.Empty;
-           
         }
     }
 }

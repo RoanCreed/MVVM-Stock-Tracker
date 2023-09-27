@@ -89,6 +89,7 @@ namespace MVVMSettings.MVVM.ViewModels
         {
             GlobalMessageViewModel = globalMessageViewModel;
             AddStockCommand = new AddStockCommand(this, messageStore);
+            
         }
 
         

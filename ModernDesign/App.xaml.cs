@@ -37,7 +37,7 @@ namespace MVVMSettings
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore, CreateGlobalMessageViewModel(), CreateHomeViewModel, CreateAddStockViewModel, CreateEditStockViewModel)
+                DataContext = new MainViewModel(_navigationStore, _messageStore, CreateGlobalMessageViewModel(), CreateHomeViewModel, CreateAddStockViewModel, CreateEditStockViewModel)
             };
             MainWindow.Show();
 
