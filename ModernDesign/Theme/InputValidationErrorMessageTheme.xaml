@@ -30,11 +30,11 @@
                 <ControlTemplate TargetType="TextBox">
                     <StackPanel>
                         <Border Padding="{TemplateBinding Padding}"
-                    BorderBrush="Green"
-                    Background="White"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="3"
-                    >
+                                BorderBrush="Green"
+                                Background="White"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3"
+                                >
                             <ScrollViewer x:Name="PART_ContentHost"/>
                         </Border>
                     </StackPanel>

@@ -15,7 +15,7 @@
     <Grid Grid.IsSharedSizeScope="True">
 
         <Grid.Resources>
-           
+
         </Grid.Resources>
 
         <Grid.RowDefinitions>
@@ -159,9 +159,9 @@
 
 
         <StackPanel
-        Grid.Row="4"
-        Margin="50 25 0 0"
-        Orientation="Horizontal">
+            Grid.Row="4"
+            Margin="50 25 0 0"
+            Orientation="Horizontal">
             <Button Command="{Binding AddStockCommand}" 
                     Content="Add" 
                     FontSize="20"
@@ -179,6 +179,7 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=avgBuyPrice, 
                                 Path=(Validation.HasError)}" Value="True">
+                                
                                 <Setter Property="IsEnabled" Value="False"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=currentBuyPrice, 
@@ -194,10 +195,12 @@
 
         </StackPanel>
 
-        <views:GlobalMessageBanner Grid.Row="5"
-                     Margin="20,20,500,20"
-                     
-                     DataContext="{Binding GlobalMessageViewModel}"
-                     />
+        <StackPanel Grid.Row="5">
+            <views:GlobalMessageBanner 
+             Margin="20 20 0 0"
+             DataContext="{Binding GlobalMessageViewModel}" HorizontalAlignment="Left"
+             />
+        </StackPanel>
+        
     </Grid>
 </UserControl>

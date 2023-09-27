@@ -45,11 +45,13 @@
                     FontSize="20"
                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    SelectedItem="{Binding SelectedItem}">
+                    SelectedItem="{Binding SelectedItem}"
+                    BorderThickness="0">
 
 
 
                     <ListView.View>
+                        
                         <GridView>
 
                             <GridView.ColumnHeaderContainerStyle>
@@ -168,7 +170,8 @@
                     x:Name="shares"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Margin="0 5 0 0">
+                    Margin="0 5 0 0"
+                    Style="{StaticResource InputValidationErrorTheme}">
 
                     <TextBox.Text>
                         <Binding Path="Shares" UpdateSourceTrigger="PropertyChanged">
@@ -189,7 +192,8 @@
                     x:Name="avgBuyPrice"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Margin="10 5 0 0">
+                    Margin="10 5 0 0"
+                    Style="{StaticResource InputValidationErrorTheme}">
 
                     <TextBox.Text>
                         <Binding Path="AvgBuyPrice" UpdateSourceTrigger="PropertyChanged">
@@ -217,11 +221,11 @@
                 Grid.Column="0"
                 Text="Current Price" />
                 <TextBox
-                    x:Name="currentBuyPrice"
+                        x:Name="currentBuyPrice"
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="0 5 0 0"
-                        >
+                        Style="{StaticResource InputValidationErrorTheme}">
                     <TextBox.Text>
                         <Binding Path="CurrentBuyPrice" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -279,11 +283,14 @@
                 </Button>
 
             </StackPanel>
-            <local:GlobalMessageBanner Grid.Row="6"
-                     Margin="20,20,300,20"
-     
-                     DataContext="{Binding GlobalMessageViewModel}"
-                     />
+            
+            <StackPanel Grid.Row="6">
+                <local:GlobalMessageBanner
+                    Margin="20 20 0 0"
+                    DataContext="{Binding GlobalMessageViewModel}" 
+                    HorizontalAlignment="Left"
+                    />
+            </StackPanel>
         </Grid>
 
         
