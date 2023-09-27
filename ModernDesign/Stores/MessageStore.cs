@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace ModernDesign.Stores
 {
-    
     public enum MessageType
     {
         Status,
@@ -52,9 +51,7 @@ namespace ModernDesign.Stores
             CurrentMessage = message;
 
             Task.Delay(new TimeSpan(0, 0, 0, 1, 500)).ContinueWith(o => { ClearCurrentMessage(); });
-
         }
-
 
         public void ClearCurrentMessage()
         {
