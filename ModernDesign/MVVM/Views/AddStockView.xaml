@@ -197,7 +197,7 @@
 
         <StackPanel Grid.Row="5">
             <views:GlobalMessageBanner 
-             Margin="10 20 0 0"
+             Margin="10 19 0 0"
              DataContext="{Binding GlobalMessageViewModel}" HorizontalAlignment="Left"
              />
         </StackPanel>
