@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ModernDesign.MVVM.Views" xmlns:validationrules="clr-namespace:ModernDesign.Validation"
+             xmlns:local="clr-namespace:ModernDesign.MVVM.Views" 
+             xmlns:validationrules="clr-namespace:ModernDesign.Validation"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -44,11 +45,13 @@
                     FontSize="20"
                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    SelectedItem="{Binding SelectedItem}">
+                    SelectedItem="{Binding SelectedItem}"
+                    BorderThickness="0">
 
 
 
                     <ListView.View>
+                        
                         <GridView>
 
                             <GridView.ColumnHeaderContainerStyle>
@@ -119,11 +122,11 @@
                             <ControlTemplate TargetType="TextBox">
                                 <StackPanel>
                                     <Border Padding="{TemplateBinding Padding}"
-                        BorderBrush="Green"
-                        Background="White"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="3"
-                        >
+                                            BorderBrush="Green"
+                                            Background="White"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="3"
+                                            >   
                                         <ScrollViewer x:Name="PART_ContentHost"/>
                                     </Border>
                                 </StackPanel>
@@ -134,6 +137,7 @@
             </Grid.Resources>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -155,18 +159,19 @@
                     <ColumnDefinition Width="auto" SharedSizeGroup="ThirdColumn" />
                 </Grid.ColumnDefinitions>
 
-                
+
 
                 <TextBlock
-            Grid.Row="0"
-            Grid.Column="0"
-            Margin="0 0 0 0"
-            Text="Number of Shares" />
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0 0 0 0"
+                    Text="Number of Shares" />  
                 <TextBox
                     x:Name="shares"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Margin="0 5 0 0">
+                    Margin="0 5 0 0"
+                    Style="{StaticResource InputValidationErrorTheme}">
 
                     <TextBox.Text>
                         <Binding Path="Shares" UpdateSourceTrigger="PropertyChanged">
@@ -179,15 +184,16 @@
                 </TextBox>
 
                 <TextBlock
-            Grid.Row="0"
-            Grid.Column="1"
-            Margin="10 0 0 0"
-            Text="Average Price" />
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10 0 0 0"
+                    Text="Average Price" />
                 <TextBox
                     x:Name="avgBuyPrice"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Margin="10 5 0 0">
+                    Margin="10 5 0 0"
+                    Style="{StaticResource InputValidationErrorTheme}">
 
                     <TextBox.Text>
                         <Binding Path="AvgBuyPrice" UpdateSourceTrigger="PropertyChanged">
@@ -215,11 +221,11 @@
                 Grid.Column="0"
                 Text="Current Price" />
                 <TextBox
-    x:Name="currentBuyPrice"
-        Grid.Row="1"
-        Grid.Column="0"
-        Margin="0 5 0 0"
-        >
+                        x:Name="currentBuyPrice"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0 5 0 0"
+                        Style="{StaticResource InputValidationErrorTheme}">
                     <TextBox.Text>
                         <Binding Path="CurrentBuyPrice" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -277,7 +283,17 @@
                 </Button>
 
             </StackPanel>
+            
+            <StackPanel Grid.Row="6">
+                <local:GlobalMessageBanner
+                    Margin="10 20 0 0"
+                    DataContext="{Binding GlobalMessageViewModel}" 
+                    HorizontalAlignment="Left"
+                    />
+            </StackPanel>
         </Grid>
+
+        
 
 
     </Grid>

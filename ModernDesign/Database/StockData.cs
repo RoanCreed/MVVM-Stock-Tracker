@@ -15,8 +15,7 @@ namespace ModernDesign.Database
         {
             try
             {
-                if (CheckInput(stock))
-                {
+                
                     using (var db = new StockContext())
                     {
                         if (!db.Stocks.Contains(stock))
@@ -31,7 +30,7 @@ namespace ModernDesign.Database
                         }
                         
                     }
-                }
+                
 
             }
             catch (Exception)
@@ -45,14 +44,13 @@ namespace ModernDesign.Database
         {
             try
             {
-                if (CheckInput(stock))
-                {
+                
                     using (var db = new StockContext())
                     {
                         db.Remove(stock);
                         db.SaveChanges();
                     }
-                }
+                
 
             }
             catch (Exception)
@@ -64,14 +62,13 @@ namespace ModernDesign.Database
         {
             try
             {
-                if (CheckInput(stock))
-                {
+                
                     using (var db = new StockContext())
                     {
                         db.Update(stock);
                         db.SaveChanges();
                     }
-                }
+               
 
             }
             catch (Exception)
@@ -88,37 +85,7 @@ namespace ModernDesign.Database
         }
 
 
-        public static bool CheckInput(StockDataModel stock)
-        {
-            if (stock.Shares == 0
-                || stock.AvgBuyPrice == 0
-                || stock.CurrentBuyPrice == 0
-                || string.IsNullOrWhiteSpace(stock.StockName)
-                )
 
-            {
-                throw new InputValidationException();
-            }
-            else if (!CheckIsString(stock.StockName))
-            {
-                throw new InputValidationException();
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public static bool CheckIsString(string stockName)
-        {
-            foreach (char c in stockName)
-            {
-                if (!char.IsLetter(c))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        
     }
 }

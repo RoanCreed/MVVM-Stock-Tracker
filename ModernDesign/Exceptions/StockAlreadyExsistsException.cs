@@ -12,7 +12,7 @@ namespace ModernDesign.Exceptions
     {
         public StockAlreadyExsistsException()
         {
-            MessageBox.Show("Stock name already exsits. Please use the edit page to edit stocks.");
+            //MessageBox.Show("Stock name already exsits. Please use the edit page to edit stocks.");
         }
 
         public StockAlreadyExsistsException(string message) : base(message)
