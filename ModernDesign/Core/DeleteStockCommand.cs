@@ -1,5 +1,6 @@
 ﻿using ModernDesign.Database;
 using ModernDesign.Exceptions;
+using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
@@ -13,10 +14,11 @@ namespace ModernDesign.Core
     public class DeleteStockCommand : CommandBase
     {
         private readonly EditStockViewModel _editStockViewModel;
-        
+        private readonly MessageStore _messageStore;
 
-        public DeleteStockCommand(EditStockViewModel editStockViewModel)
+        public DeleteStockCommand(EditStockViewModel editStockViewModel, MessageStore messageStore)
         {
+            _messageStore = messageStore;
             _editStockViewModel = editStockViewModel;
         }
 
@@ -50,7 +52,7 @@ namespace ModernDesign.Core
             }
             catch (Exception)
             {
-
+                _messageStore.SetCurrentMessage("Selection validation failed", MessageType.Error);
             }
 
         }

@@ -49,7 +49,8 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -63,7 +64,12 @@
                FontFamily="/Fonts/#Poppings"
                Grid.Column="1"/>
 
-            <StackPanel Grid.Row="1">
+            
+
+
+
+
+            <StackPanel Grid.Row="2">
                 <RadioButton Content="Home"
                      Height="50"
                      Foreground="White"
@@ -93,7 +99,7 @@
             
 
 
-            <ContentControl Grid.Row="1"
+            <ContentControl Grid.Row="2"
                     Grid.Column="1"
                     Margin="10"
                     Content="{Binding CurrentViewModel}"/>

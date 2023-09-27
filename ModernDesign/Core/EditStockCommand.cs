@@ -1,5 +1,6 @@
 ﻿using ModernDesign.Database;
 using ModernDesign.Exceptions;
+using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
@@ -14,12 +15,14 @@ namespace ModernDesign.Core
     {
 
         private readonly EditStockViewModel _editStockViewModel;
-        private readonly StocksList _stocksList;
+        
+        private readonly MessageStore _messageStore;
 
-        public EditStockCommand(EditStockViewModel editStockViewModel, StocksList stocksList)
+        public EditStockCommand(EditStockViewModel editStockViewModel, MessageStore messageStore)
         {
             _editStockViewModel = editStockViewModel;
-            _stocksList = stocksList;
+            
+            _messageStore = messageStore;
         }
 
         public override void Execute(object parameter)
@@ -46,12 +49,12 @@ namespace ModernDesign.Core
                     _editStockViewModel.UpdateStocks();
                 }
                 else 
-                { 
-                    throw new NoSelectedItemException(); 
+                {
+                    _messageStore.SetCurrentMessage("Selection validation failed", MessageType.Error);
                 }
             }
             catch (Exception)
-            { 
+            {
                 
             }
             

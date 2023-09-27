@@ -9,8 +9,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
+                
                 <ResourceDictionary Source="Theme/ListViewTheme.xaml"/>
+                <ResourceDictionary Source="Theme/InputValidationErrorMessageTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type viewModels:MainViewModel}">

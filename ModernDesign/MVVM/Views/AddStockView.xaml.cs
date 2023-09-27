@@ -12,6 +12,5 @@ namespace MVVMSettings.MVVM.Views
             InitializeComponent();
         }
 
-       
     }
 }

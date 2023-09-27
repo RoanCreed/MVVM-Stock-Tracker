@@ -1,4 +1,5 @@
-﻿using ModernDesign.Stores;
+﻿using ModernDesign.MVVM.ViewModels;
+using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
@@ -18,11 +19,13 @@ namespace MVVMSettings
     {
         private readonly StocksList _stocksList;
         private readonly NavigationStore _navigationStore;
+        private readonly MessageStore _messageStore;
         
         public App()
         {
             _stocksList = new StocksList();
             _navigationStore = new NavigationStore();
+            _messageStore = new MessageStore();
             
         }
 
@@ -34,7 +37,7 @@ namespace MVVMSettings
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore, CreateHomeViewModel, CreateAddStockViewModel, CreateEditStockViewModel)
+                DataContext = new MainViewModel(_navigationStore, _messageStore, CreateGlobalMessageViewModel(), CreateHomeViewModel, CreateAddStockViewModel, CreateEditStockViewModel)
             };
             MainWindow.Show();
 
@@ -44,17 +47,22 @@ namespace MVVMSettings
 
         private HomeViewModel CreateHomeViewModel()
         {
-            return new HomeViewModel(_stocksList, _navigationStore);
+            return new HomeViewModel(_stocksList);
         }
 
         private EditStockViewModel CreateEditStockViewModel()
         {
-            return new EditStockViewModel(_stocksList, _navigationStore);
+            return new EditStockViewModel(_stocksList, _navigationStore, _messageStore, CreateGlobalMessageViewModel());
         }
 
         private AddStockViewModel CreateAddStockViewModel()
         {
-            return new AddStockViewModel(_stocksList, _navigationStore);
+            return new AddStockViewModel(_navigationStore, _messageStore, CreateGlobalMessageViewModel());
+        }
+
+        private GlobalMessageViewModel CreateGlobalMessageViewModel()
+        {
+            return new GlobalMessageViewModel(_messageStore);
         }
 
 

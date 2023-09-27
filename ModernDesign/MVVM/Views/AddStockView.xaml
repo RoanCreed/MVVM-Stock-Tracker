@@ -4,60 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVMSettings.MVVM.Views" 
-             xmlns:validationrules="clr-namespace:ModernDesign.Validation"
+             xmlns:validationrules="clr-namespace:ModernDesign.Validation" xmlns:views="clr-namespace:ModernDesign.MVVM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent"
              Foreground="White"
              FontSize="18">
-    
-    
+
+
     <Grid Grid.IsSharedSizeScope="True">
-        
+
         <Grid.Resources>
-            <Style TargetType="TextBox">
-                <Setter Property="Padding" Value="2 1"/>
 
-                <Setter Property="Validation.ErrorTemplate">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <StackPanel>
-                                <AdornedElementPlaceholder/>
-                                <ItemsControl Margin="0 3 0 0"
-                                      FontSize="14"
-                                      ItemsSource="{Binding}"
-                                      FontWeight="DemiBold">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Foreground="Red" Text="{Binding ErrorContent}"/>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TextBox">
-                            <StackPanel>
-                                <Border Padding="{TemplateBinding Padding}"
-                                BorderBrush="Green"
-                                Background="White"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="3"
-                                >
-                                    <ScrollViewer x:Name="PART_ContentHost"/>
-                                </Border>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
         </Grid.Resources>
-        
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -83,11 +45,11 @@
             </Grid.ColumnDefinitions>
 
 
-            
-            
-            
-            
-            
+
+
+
+
+
 
             <TextBlock
                 Grid.Row="0"
@@ -97,9 +59,10 @@
                 x:Name="stockName"
                 Grid.Row="1"
                 Grid.Column="0"
-                Margin="0 5 0 0">
+                Margin="0 5 0 0"
+                Style="{StaticResource InputValidationErrorTheme}">
 
-                
+
                 <TextBox.Text>
                     <Binding Path="StockName" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -107,20 +70,21 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-                
-            </TextBox>                
+
+            </TextBox>
 
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="1"
                 Margin="10 0 0 0"
                 Text="Number of Shares" />
-            
+
             <TextBox
                 x:Name="shares"
                 Grid.Row="1"
                 Grid.Column="1"
-                Margin="10 5 0 0">
+                Margin="10 5 0 0"
+                Style="{StaticResource InputValidationErrorTheme}">
 
                 <TextBox.Text>
                     <Binding Path="Shares" UpdateSourceTrigger="PropertyChanged">
@@ -154,7 +118,8 @@
                     x:Name="avgBuyPrice"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Margin="0 5 0 0">
+                    Margin="0 5 0 0"
+                Style="{StaticResource InputValidationErrorTheme}">
 
                 <TextBox.Text>
                     <Binding Path="AvgBuyPrice" UpdateSourceTrigger="PropertyChanged">
@@ -163,7 +128,7 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-                
+
             </TextBox>
 
             <TextBlock
@@ -176,6 +141,7 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     Margin="10 5 0 0"
+                    Style="{StaticResource InputValidationErrorTheme}"
                     >
                 <TextBox.Text>
                     <Binding Path="CurrentBuyPrice" UpdateSourceTrigger="PropertyChanged">
@@ -184,18 +150,18 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-                
+
             </TextBox>
 
 
         </Grid>
 
-        
+
 
         <StackPanel
-        Grid.Row="4"
-        Margin="50 25 0 0"
-        Orientation="Horizontal">
+            Grid.Row="4"
+            Margin="50 25 0 0"
+            Orientation="Horizontal">
             <Button Command="{Binding AddStockCommand}" 
                     Content="Add" 
                     FontSize="20"
@@ -213,6 +179,7 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=avgBuyPrice, 
                                 Path=(Validation.HasError)}" Value="True">
+                                
                                 <Setter Property="IsEnabled" Value="False"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=currentBuyPrice, 
@@ -223,7 +190,17 @@
                     </Style>
                 </Button.Style>
             </Button>
-            
+
+
+
         </StackPanel>
+
+        <StackPanel Grid.Row="5">
+            <views:GlobalMessageBanner 
+             Margin="10 20 0 0"
+             DataContext="{Binding GlobalMessageViewModel}" HorizontalAlignment="Left"
+             />
+        </StackPanel>
+        
     </Grid>
 </UserControl>

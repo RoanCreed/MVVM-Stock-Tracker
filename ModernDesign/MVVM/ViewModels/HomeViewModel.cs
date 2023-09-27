@@ -1,4 +1,5 @@
 ﻿using ModernDesign.Core;
+using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using System;
@@ -36,7 +37,7 @@ namespace MVVMSettings.MVVM.ViewModels
 
         //public ICommand AddStockCommand { get; }
 
-        public HomeViewModel(StocksList stocksList, NavigationStore navigationStore)
+        public HomeViewModel(StocksList stocksList)
         {
             _stocksList = stocksList;
             _stockData = new ObservableCollection<StockListViewModel>();
