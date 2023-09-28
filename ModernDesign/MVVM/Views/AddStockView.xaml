@@ -131,27 +131,7 @@
 
             </TextBox>
 
-            <TextBlock
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Text="Current Price" 
-                    Margin="10 0 0 0"/>
-            <TextBox
-                x:Name="currentBuyPrice"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="10 5 0 0"
-                    Style="{StaticResource InputValidationErrorTheme}"
-                    >
-                <TextBox.Text>
-                    <Binding Path="CurrentBuyPrice" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <validationrules:FloatValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-
-            </TextBox>
+            
 
 
         </Grid>
@@ -179,13 +159,9 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=avgBuyPrice, 
                                 Path=(Validation.HasError)}" Value="True">
-                                
                                 <Setter Property="IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=currentBuyPrice, 
-                                Path=(Validation.HasError)}" Value="True">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
+                            
                         </Style.Triggers>
                     </Style>
                 </Button.Style>

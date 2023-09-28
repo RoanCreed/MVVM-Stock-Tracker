@@ -46,6 +46,7 @@ namespace ModernDesign.Core
 
 
                     StockData.EditStockDataFromDb(stockData);
+                    _messageStore.SetCurrentMessage("Stock edited", MessageType.Status);
                     _editStockViewModel.UpdateStocks();
                 }
                 else 

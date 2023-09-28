@@ -1,9 +1,11 @@
-﻿using ModernDesign.Database;
+﻿using ModernDesign.API;
+using ModernDesign.Database;
 using ModernDesign.Exceptions;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
+using System.Threading.Tasks;
 
 namespace ModernDesign.Core
 {
@@ -27,10 +29,25 @@ namespace ModernDesign.Core
             {
                 if (CheckInput(_addStockViewModel))
                 {
+                    CurrentDataAPI currentData = new CurrentDataAPI();
+
+                    APIData[] apiResponse = currentData.CallApiSync(_addStockViewModel.StockName);
+                    if (apiResponse != null)
+                    {
+                        _addStockViewModel.CurrentBuyPrice = apiResponse[0].Price;
+                    }
+                    else
+                    {
+                        
+                        throw new StockDoesNotExsistException();
+                    }
+
                     float initalInvestment = _addStockViewModel.Shares * _addStockViewModel.AvgBuyPrice;
                     float currentInvestment = _addStockViewModel.Shares * _addStockViewModel.CurrentBuyPrice;
 
                     float returnInvestment = currentInvestment - initalInvestment;
+
+
 
                     StockDataModel stockData = new StockDataModel(
                         _addStockViewModel.StockName.ToUpper(),
@@ -42,13 +59,29 @@ namespace ModernDesign.Core
 
 
                     StockData.AddStockDataToDb(stockData);
-                    
+                    _messageStore.SetCurrentMessage("Stock added successfully!", MessageType.Status);
                 }
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _messageStore.SetCurrentMessage("Input validation failed", MessageType.Error);
+                if (ex is InputValidationException)
+                {
+                    _messageStore.SetCurrentMessage("Input validation failed", MessageType.Error);
+                }
+                else if(ex is StockDoesNotExsistException)
+                {
+                    _messageStore.SetCurrentMessage("Stock name does not exsist", MessageType.Error);
+                }
+                else if (ex is StockAlreadyExsistsException)
+                {
+                    _messageStore.SetCurrentMessage("Stock name already exsists", MessageType.Error);
+                }
+                else
+                {
+                    _messageStore.SetCurrentMessage("Error", MessageType.Error);
+                }
+                
             }
 
         }
@@ -58,7 +91,6 @@ namespace ModernDesign.Core
         {
             if (stock.Shares == 0
                 || stock.AvgBuyPrice == 0
-                || stock.CurrentBuyPrice == 0
                 || string.IsNullOrWhiteSpace(stock.StockName)
                 )
 
@@ -72,7 +104,7 @@ namespace ModernDesign.Core
             }
         }
 
-        public static bool CheckIsString(string stockName)
+        public static bool CheckIsString(string stockName)  //Can delete?
         {
             foreach (char c in stockName)
             {
