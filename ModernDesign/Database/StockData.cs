@@ -15,7 +15,6 @@ namespace ModernDesign.Database
         {
             try
             {
-                
                     using (var db = new StockContext())
                     {
                         if (!db.Stocks.Contains(stock))
@@ -30,28 +29,21 @@ namespace ModernDesign.Database
                         }
                         
                     }
-                
-
             }
             catch (Exception)
             {
             }
-
-
         }
 
         public static void DeleteStockDataFromDb(StockDataModel stock)
         {
             try
-            {
-                
+            {   
                     using (var db = new StockContext())
                     {
                         db.Remove(stock);
                         db.SaveChanges();
-                    }
-                
-
+                    }               
             }
             catch (Exception)
             {
@@ -62,20 +54,18 @@ namespace ModernDesign.Database
         {
             try
             {
-                
                     using (var db = new StockContext())
                     {
                         db.Update(stock);
                         db.SaveChanges();
                     }
-               
-
             }
             catch (Exception)
             {
             }
         }
 
+        
         public static List<StockDataModel> GetAllStockData()
         {
             using (var db = new StockContext())
@@ -84,8 +74,5 @@ namespace ModernDesign.Database
             }
         }
 
-
-
-        
     }
 }

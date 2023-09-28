@@ -1,4 +1,6 @@
-﻿using ModernDesign.Database;
+﻿using ModernDesign.API;
+using ModernDesign.Database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace MVVMSettings.MVVM.Models
         }
 
         public IEnumerable<StockDataModel> GetAllStockData() 
-        { 
+        {
             return StockData.GetAllStockData();
         }
 

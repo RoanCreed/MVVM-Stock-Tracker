@@ -23,8 +23,6 @@ namespace ModernDesign.MVVM.ViewModels
             _messageStore.CurrentMessageTypeChanged += MessageStore_CurrentMessageTypeChanged;
         }
 
-        
-
         private void MessageStore_CurrentMessageTypeChanged()
         {
             OnPropertyChanged(nameof(MessageType));

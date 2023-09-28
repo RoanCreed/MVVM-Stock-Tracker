@@ -1,4 +1,5 @@
-﻿using ModernDesign.Core;
+﻿using ModernDesign.API;
+using ModernDesign.Core;
 using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ModernDesign.Database;
 
 namespace MVVMSettings.MVVM.ViewModels
 {
@@ -33,29 +35,26 @@ namespace MVVMSettings.MVVM.ViewModels
         }
 
 
-        public IEnumerable<StockListViewModel> StockData => _stockData;
-
-        //public ICommand AddStockCommand { get; }
+        public IEnumerable<StockListViewModel> StockDataCollection => _stockData;
 
         public HomeViewModel(StocksList stocksList)
         {
             _stocksList = stocksList;
             _stockData = new ObservableCollection<StockListViewModel>();
 
-            UpdateStocks();
+
+            UpdateCurrentPrice();
+            GetStocks();
 
             
-            /*
-            _stockData.Add(new StockListViewModel(new StockDataModel("AAPL", 50, 1000, 20, 20)));
-            _stockData.Add(new StockListViewModel(new StockDataModel("RIVN", 7, 899, 54, 22)));
-            _stockData.Add(new StockListViewModel(new StockDataModel("TSLA", 76, 6548, 90, 16)));
-            _stockData.Add(new StockListViewModel(new StockDataModel("SBUX", 50, 323, 5, 6)));
-            */
         }
 
-        private void UpdateStocks()
+        
+
+        private void GetStocks()
         {
             _stockData.Clear();
+
 
             foreach(StockDataModel stock in _stocksList.GetAllStockData())
             {
@@ -64,7 +63,40 @@ namespace MVVMSettings.MVVM.ViewModels
                 _totalReturn += stock.ReturnInvestment;
             }
 
+
             OnPropertyChanged(nameof(TotalReturn));
+        }
+
+        private void UpdateCurrentPrice()
+        {
+            CurrentDataAPI currentData = new CurrentDataAPI();
+
+
+            foreach (StockDataModel stock in _stocksList.GetAllStockData())
+            {
+                APIData[] apiResponse = currentData.CallApiSync(stock.StockName);
+                if (apiResponse != null)
+                {
+                    stock.CurrentBuyPrice = apiResponse[0].Price;
+
+                    float initalInvestment = stock.Shares * stock.AvgBuyPrice;
+                    float currentInvestment = stock.Shares * stock.CurrentBuyPrice;
+
+                    float returnInvestment = currentInvestment - initalInvestment;
+
+                    StockDataModel stockData = new StockDataModel(
+                        stock.StockName.ToUpper(),
+                        stock.Shares,
+                        returnInvestment,
+                        stock.AvgBuyPrice,
+                        stock.CurrentBuyPrice
+                        );
+
+                    
+                    StockData.EditStockDataFromDb(stockData);
+                }
+            }
+
         }
     }
 }

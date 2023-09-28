@@ -167,6 +167,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\APIData.cs" />
+    <Compile Include="API\CurrentDataAPI.cs" />
     <Compile Include="Core\DeleteStockCommand.cs" />
     <Compile Include="Core\EditStockCommand.cs" />
     <Compile Include="Core\NavigationCommand.cs" />
