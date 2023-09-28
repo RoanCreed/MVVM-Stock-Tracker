@@ -59,7 +59,7 @@ namespace ModernDesign.Core
 
 
                     StockData.AddStockDataToDb(stockData);
-                    
+                    _messageStore.SetCurrentMessage("Stock added successfully!", MessageType.Status);
                 }
                 
             }
