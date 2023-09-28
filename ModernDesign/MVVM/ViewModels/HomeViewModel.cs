@@ -49,8 +49,6 @@ namespace MVVMSettings.MVVM.ViewModels
             
         }
 
-        
-
         private void GetStocks()
         {
             _stockData.Clear();
@@ -92,7 +90,6 @@ namespace MVVMSettings.MVVM.ViewModels
                         stock.CurrentBuyPrice
                         );
 
-                    
                     StockData.EditStockDataFromDb(stockData);
                 }
             }

@@ -50,7 +50,7 @@ namespace ModernDesign.Stores
             CurrentMessageType = messageType;
             CurrentMessage = message;
 
-            Task.Delay(new TimeSpan(0, 0, 0, 1, 500)).ContinueWith(o => { ClearCurrentMessage(); });
+            Task.Delay(new TimeSpan(0, 0, 0, 2, 0)).ContinueWith(o => { ClearCurrentMessage(); });
         }
 
         public void ClearCurrentMessage()

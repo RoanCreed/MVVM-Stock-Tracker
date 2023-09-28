@@ -19,7 +19,6 @@ namespace ModernDesign.API
 
         public APIData[] CallApiSync(string stock)
         {
-
             string apiStart = "https://financialmodelingprep.com/api/v3/quote/";
             string apiEnd = "?limit=1&apikey=94e07214964175f36c3ca22f1f9a5a18";
 
@@ -35,7 +34,16 @@ namespace ModernDesign.API
                     var content = response.Content.ReadAsStringAsync().Result;
                     APIData[] result = JsonConvert.DeserializeObject<APIData[]>(content);
 
-                    return result;
+                    if (!(result.Length == 0))
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    
                 }
                 else
                 {
