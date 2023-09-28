@@ -54,7 +54,7 @@ namespace MVVMSettings.MVVM.ViewModels
                 OnPropertyChanged(nameof(AvgBuyPrice));
             }
         }
-
+        
         private float _currentBuyPrice;
         public float CurrentBuyPrice
         {
@@ -69,6 +69,7 @@ namespace MVVMSettings.MVVM.ViewModels
                 OnPropertyChanged(nameof(CurrentBuyPrice));
             }
         }
+        
 
         private StockListViewModel _selectedItem;
         public StockListViewModel SelectedItem

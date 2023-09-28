@@ -38,11 +38,11 @@ namespace ModernDesign.Core
                     }
                     else
                     {
-                        _messageStore.SetCurrentMessage("Stock name does not exsist, API request failed", MessageType.Error);
-                        throw new InputValidationException();
+                        
+                        throw new StockDoesNotExsistException();
                     }
 
-                        float initalInvestment = _addStockViewModel.Shares * _addStockViewModel.AvgBuyPrice;
+                    float initalInvestment = _addStockViewModel.Shares * _addStockViewModel.AvgBuyPrice;
                     float currentInvestment = _addStockViewModel.Shares * _addStockViewModel.CurrentBuyPrice;
 
                     float returnInvestment = currentInvestment - initalInvestment;
@@ -63,15 +63,31 @@ namespace ModernDesign.Core
                 }
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex is InputValidationException)
+                {
+                    _messageStore.SetCurrentMessage("Input validation failed", MessageType.Error);
+                }
+                else if(ex is StockDoesNotExsistException)
+                {
+                    _messageStore.SetCurrentMessage("Stock name does not exsist", MessageType.Error);
+                }
+                else if (ex is StockAlreadyExsistsException)
+                {
+                    _messageStore.SetCurrentMessage("Stock name already exsists", MessageType.Error);
+                }
+                else
+                {
+                    _messageStore.SetCurrentMessage("Error", MessageType.Error);
+                }
                 
             }
 
         }
 
 
-        public bool CheckInput(AddStockViewModel stock)
+        public static bool CheckInput(AddStockViewModel stock)
         {
             if (stock.Shares == 0
                 || stock.AvgBuyPrice == 0
@@ -79,7 +95,7 @@ namespace ModernDesign.Core
                 )
 
             {
-                _messageStore.SetCurrentMessage("Input validation failed", MessageType.Error);
+                
                 throw new InputValidationException();
             }
             else

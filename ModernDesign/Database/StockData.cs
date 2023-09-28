@@ -1,5 +1,6 @@
 ﻿using ModernDesign.Exceptions;
 using ModernDesign.MVVM.Models;
+using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
@@ -13,8 +14,7 @@ namespace ModernDesign.Database
     {
         public static void AddStockDataToDb(StockDataModel stock)
         {
-            try
-            {
+            
                     using (var db = new StockContext())
                     {
                         if (!db.Stocks.Contains(stock))
@@ -29,10 +29,10 @@ namespace ModernDesign.Database
                         }
                         
                     }
-            }
-            catch (Exception)
-            {
-            }
+            
+            
+                
+            
         }
 
         public static void DeleteStockDataFromDb(StockDataModel stock)

@@ -206,38 +206,7 @@
                 </TextBox>
             </Grid>
 
-            <Grid Grid.Row="2" Margin="0 10 0 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn" />
-                    <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Text="Current Price" />
-                <TextBox
-                        x:Name="currentBuyPrice"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="0 5 0 0"
-                        Style="{StaticResource InputValidationErrorTheme}">
-                    <TextBox.Text>
-                        <Binding Path="CurrentBuyPrice" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <validationrules:FloatValidationRule/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-
-                </TextBox>
-
-            </Grid>
-
+            
 
 
             
@@ -257,15 +226,11 @@
                         <Style TargetType="Button">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding ElementName=shares, 
-                Path=(Validation.HasError)}" Value="True">
+                                            Path=(Validation.HasError)}" Value="True">
                                     <Setter Property="IsEnabled" Value="False"/>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding ElementName=avgBuyPrice, 
-                Path=(Validation.HasError)}" Value="True">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=currentBuyPrice, 
-                Path=(Validation.HasError)}" Value="True">
+                                            Path=(Validation.HasError)}" Value="True">
                                     <Setter Property="IsEnabled" Value="False"/>
                                 </DataTrigger>
                             </Style.Triggers>

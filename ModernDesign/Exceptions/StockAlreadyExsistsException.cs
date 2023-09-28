@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernDesign.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,9 +11,9 @@ namespace ModernDesign.Exceptions
 {
     internal class StockAlreadyExsistsException : Exception
     {
+
         public StockAlreadyExsistsException()
         {
-            //MessageBox.Show("Stock name already exsits. Please use the edit page to edit stocks.");
         }
 
         public StockAlreadyExsistsException(string message) : base(message)
