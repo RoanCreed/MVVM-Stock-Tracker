@@ -43,6 +43,7 @@ namespace ModernDesign.Core
 
 
                     StockData.DeleteStockDataFromDb(stockData);
+                    _messageStore.SetCurrentMessage("Stock deleted", MessageType.Status);
                     _editStockViewModel.UpdateStocks();
                 }
                 else
