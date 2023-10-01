@@ -46,7 +46,7 @@ namespace ModernDesign.API
 
         public double Pe { get; set; } // 29.27760500
 
-        public DateTime EarningsAnnouncement { get; set; } // DateTime representation of "2021-07-27T16:30:00.000+0000"
+        public string EarningsAnnouncement { get; set; } // DateTime representation of "2021-07-27T16:30:00.000+0000"
 
         public long SharesOutstanding { get; set; } // 16530199400
 
