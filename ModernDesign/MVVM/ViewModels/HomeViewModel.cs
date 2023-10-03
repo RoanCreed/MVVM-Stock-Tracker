@@ -1,16 +1,14 @@
 ﻿using ModernDesign.API;
-using ModernDesign.Core;
-using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using ModernDesign.Database;
+using ModernDesign.Core;
+using ModernDesign.MVVM.ViewModels;
+
+
 
 namespace MVVMSettings.MVVM.ViewModels
 {
@@ -36,16 +34,30 @@ namespace MVVMSettings.MVVM.ViewModels
 
 
         public IEnumerable<StockListViewModel> StockDataCollection => _stockData;
+        public ICommand LoadStocksCommand { get; }
 
         public HomeViewModel(StocksList stocksList)
         {
             _stocksList = stocksList;
             _stockData = new ObservableCollection<StockListViewModel>();
+            
+            LoadStocksCommand = new LoadStocksCommand(this, new StockStore(stocksList));
+            LoadStocksCommand.Execute(null);
+            //UpdateCurrentPrice();
+            //GetStocks();
 
 
-            UpdateCurrentPrice();
-            GetStocks();
+        }
 
+        public void UpdateStocks(IEnumerable<StockDataModel> _stocks) 
+        {
+            _stockData.Clear();
+            
+            foreach(StockDataModel stock in _stocks)
+            {
+                StockListViewModel StockDataModel = new StockListViewModel(stock);
+                _stockData.Add(StockDataModel);
+            }
             
         }
 

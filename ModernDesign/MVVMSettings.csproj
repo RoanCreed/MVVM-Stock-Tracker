@@ -169,8 +169,10 @@
     </ApplicationDefinition>
     <Compile Include="API\APIData.cs" />
     <Compile Include="API\CurrentDataAPI.cs" />
+    <Compile Include="Core\AsyncCommandBase.cs" />
     <Compile Include="Core\DeleteStockCommand.cs" />
     <Compile Include="Core\EditStockCommand.cs" />
+    <Compile Include="Core\LoadStocksCommand.cs" />
     <Compile Include="Core\NavigationCommand.cs" />
     <Compile Include="Database\StockData.cs" />
     <Compile Include="Exceptions\InputValidationException.cs" />
@@ -196,6 +198,7 @@
     </Compile>
     <Compile Include="Stores\MessageStore.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Stores\StockStore.cs" />
     <Compile Include="Validation\FloatValidationRule.cs" />
     <Compile Include="Validation\StockNameValidationRule.cs" />
     <Page Include="MainWindow.xaml">

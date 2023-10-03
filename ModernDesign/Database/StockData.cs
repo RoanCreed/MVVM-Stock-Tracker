@@ -1,4 +1,5 @@
-﻿using ModernDesign.Exceptions;
+﻿using Microsoft.EntityFrameworkCore;
+using ModernDesign.Exceptions;
 using ModernDesign.MVVM.Models;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
@@ -7,10 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ModernDesign.Database
 {
-    public static class StockData
+    public class StockData
     {
         public static void AddStockDataToDb(StockDataModel stock)
         {
@@ -64,13 +66,21 @@ namespace ModernDesign.Database
             {
             }
         }
-
         
-        public static List<StockDataModel> GetAllStockData()
+        public List<StockDataModel> GetAllStockData()
         {
             using (var db = new StockContext())
             {
                 return db.Stocks.ToList();
+            }
+        }
+
+        
+        public async Task<List<StockDataModel>> GetAllStockDataAsync()
+        {
+            using (var db = new StockContext())
+            {
+                return await db.Stocks.ToListAsync(); 
             }
         }
 
