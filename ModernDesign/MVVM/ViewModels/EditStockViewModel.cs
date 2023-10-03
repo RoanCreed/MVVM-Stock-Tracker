@@ -1,14 +1,9 @@
 ﻿using ModernDesign.Core;
-using ModernDesign.Exceptions;
 using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace MVVMSettings.MVVM.ViewModels

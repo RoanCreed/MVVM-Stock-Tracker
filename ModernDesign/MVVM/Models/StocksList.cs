@@ -12,16 +12,23 @@ namespace MVVMSettings.MVVM.Models
     public class StocksList
     {
 
-        private readonly List<StockDataModel> _stockData;
+        private readonly List<StockDataModel> _stockDataList;
+        private StockData _stockData;
 
         public StocksList()
         {
-            _stockData = new List<StockDataModel>();
+            _stockDataList = new List<StockDataModel>();
+            _stockData = new StockData();
         }
 
         public IEnumerable<StockDataModel> GetAllStockData() 
         {
-            return StockData.GetAllStockData();
+            return _stockData.GetAllStockData();
+        }
+
+        public async Task<IEnumerable<StockDataModel>> GetAllStockDataAsync()
+        {
+            return await _stockData.GetAllStockDataAsync();
         }
 
 
