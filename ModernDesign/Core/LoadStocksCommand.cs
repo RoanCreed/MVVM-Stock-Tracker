@@ -30,7 +30,7 @@ namespace ModernDesign.Core
             }
             catch (Exception)
             {
-                //MessageBox.Show("Failed to load stocks.", "Error",
+                //MessageBox.Show("Failed to load stocks.", "Error",   //Add this into the global message store
             }
         }
     }

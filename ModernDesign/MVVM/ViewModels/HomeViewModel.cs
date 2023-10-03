@@ -57,10 +57,12 @@ namespace MVVMSettings.MVVM.ViewModels
             {
                 StockListViewModel StockDataModel = new StockListViewModel(stock);
                 _stockData.Add(StockDataModel);
+                _totalReturn += stock.ReturnInvestment;
             }
-            
+            OnPropertyChanged(nameof(TotalReturn));
         }
 
+        
         private void GetStocks()
         {
             _stockData.Clear();
