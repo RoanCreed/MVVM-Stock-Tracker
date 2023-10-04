@@ -1,17 +1,13 @@
 ﻿using ModernDesign.Database;
-using ModernDesign.Exceptions;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ModernDesign.Core
 {
-    public class EditStockCommand : CommandBase
+    public class EditStockCommand : AsyncCommandBase
     {
 
         private readonly EditStockViewModel _editStockViewModel;
@@ -25,7 +21,7 @@ namespace ModernDesign.Core
             _messageStore = messageStore;
         }
 
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             try
             {
@@ -44,8 +40,8 @@ namespace ModernDesign.Core
                         _editStockViewModel.CurrentBuyPrice
                         );
 
-
-                    StockData.EditStockDataFromDb(stockData);
+                    StockData stockDataHelper = new StockData();
+                    await stockDataHelper.EditStockDataFromDbAsync(stockData);
                     _messageStore.SetCurrentMessage("Stock edited", MessageType.Status);
                     _editStockViewModel.UpdateStocks();
                 }
