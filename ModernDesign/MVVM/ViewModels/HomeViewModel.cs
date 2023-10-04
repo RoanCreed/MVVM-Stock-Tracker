@@ -26,7 +26,6 @@ namespace MVVMSettings.MVVM.ViewModels
             }
             set
             {
-
                 _totalReturn = value;
                 OnPropertyChanged(nameof(TotalReturn));
             }
@@ -42,7 +41,9 @@ namespace MVVMSettings.MVVM.ViewModels
             _stockData = new ObservableCollection<StockListViewModel>();
             
             LoadStocksCommand = new LoadStocksCommand(this, new StockStore(stocksList));
-            LoadStocksCommand.Execute(null);
+            LoadStocksCommand.Execute(null);    //Loads the stocks through an async command
+
+
             //UpdateCurrentPrice();
             //GetStocks();
 
@@ -63,6 +64,11 @@ namespace MVVMSettings.MVVM.ViewModels
         }
 
         
+
+
+
+
+
         private void GetStocks()
         {
             _stockData.Clear();

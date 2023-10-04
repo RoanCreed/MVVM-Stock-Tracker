@@ -66,7 +66,24 @@ namespace ModernDesign.Database
             {
             }
         }
-        
+
+
+
+        public async Task EditStockDataFromDbAsync(StockDataModel stock)
+        {
+            try
+            {
+                using (var db = new StockContext())
+                {
+                    db.Update(stock);
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         public List<StockDataModel> GetAllStockData()
         {
             using (var db = new StockContext())

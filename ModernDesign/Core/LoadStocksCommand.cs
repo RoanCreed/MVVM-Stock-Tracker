@@ -1,4 +1,7 @@
-﻿using ModernDesign.Stores;
+﻿using ModernDesign.API;
+using ModernDesign.Database;
+using ModernDesign.Stores;
+using MVVMSettings.MVVM.Models;
 using MVVMSettings.MVVM.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,6 +28,33 @@ namespace ModernDesign.Core
             try
             {
                 await _stockStore.Load();
+
+                CurrentDataAPI currentData = new CurrentDataAPI();
+
+                foreach (StockDataModel stock in _stockStore.Stocks)
+                {
+                    APIData[] apiResponse = currentData.CallApiSync(stock.StockName);
+                    if (apiResponse != null)
+                    {
+                        stock.CurrentBuyPrice = apiResponse[0].Price;
+
+                        float initalInvestment = stock.Shares * stock.AvgBuyPrice;
+                        float currentInvestment = stock.Shares * stock.CurrentBuyPrice;
+
+                        float returnInvestment = currentInvestment - initalInvestment;
+
+                        StockDataModel stockData = new StockDataModel(
+                            stock.StockName.ToUpper(),
+                            stock.Shares,
+                            returnInvestment,
+                            stock.AvgBuyPrice,
+                            stock.CurrentBuyPrice
+                            );
+
+                        StockData stockDataHelper = new StockData();
+                        Task.Run(() => stockDataHelper.EditStockDataFromDbAsync(stockData));
+                    }
+                }
 
                 _viewModel.UpdateStocks(_stockStore.Stocks);
             }
