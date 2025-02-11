@@ -30,12 +30,12 @@ namespace ModernDesign.Core
                 await _stockStore.Load();
 
                 CurrentDataAPI currentData = new CurrentDataAPI();
-
                 foreach (StockDataModel stock in _stockStore.Stocks)
                 {
                     APIData[] apiResponse = currentData.CallApiSync(stock.StockName);
                     if (apiResponse != null)
                     {
+                        Console.WriteLine(apiResponse);
                         stock.CurrentBuyPrice = apiResponse[0].Price;
 
                         float initalInvestment = stock.Shares * stock.AvgBuyPrice;
@@ -52,15 +52,15 @@ namespace ModernDesign.Core
                             );
 
                         StockData stockDataHelper = new StockData();
-                        Task.Run(() => stockDataHelper.EditStockDataFromDbAsync(stockData));
+                        await Task.Run(() => stockDataHelper.EditStockDataFromDbAsync(stockData));
                     }
                 }
 
-                _viewModel.UpdateStocks(_stockStore.Stocks);
+                _viewModel.UpdateStocksAsync(_stockStore.Stocks);
             }
             catch (Exception)
             {
-                //MessageBox.Show("Failed to load stocks.", "Error",   //Add this into the global message store
+                MessageBox.Show("Failed to load stocks.", "Error");   //Add this into the global message store
             }
         }
     }
