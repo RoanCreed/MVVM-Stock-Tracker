@@ -7,6 +7,8 @@ using System.Windows.Input;
 using ModernDesign.Database;
 using ModernDesign.Core;
 using ModernDesign.MVVM.ViewModels;
+using System.Threading.Tasks;
+using System;
 
 
 
@@ -26,7 +28,6 @@ namespace MVVMSettings.MVVM.ViewModels
             }
             set
             {
-
                 _totalReturn = value;
                 OnPropertyChanged(nameof(TotalReturn));
             }
@@ -40,28 +41,30 @@ namespace MVVMSettings.MVVM.ViewModels
         {
             _stocksList = stocksList;
             _stockData = new ObservableCollection<StockListViewModel>();
-            
+
+
             LoadStocksCommand = new LoadStocksCommand(this, new StockStore(stocksList));
-            LoadStocksCommand.Execute(null);
+            LoadStocksCommand.Execute(null);    //Loads the stocks through an async command
             //UpdateCurrentPrice();
             //GetStocks();
 
-
         }
 
-        public void UpdateStocks(IEnumerable<StockDataModel> _stocks) 
+        public void UpdateStocksAsync(IEnumerable<StockDataModel> _stocks)
         {
             _stockData.Clear();
-            
-            foreach(StockDataModel stock in _stocks)
+            foreach (StockDataModel stock in _stocks)
             {
                 StockListViewModel StockDataModel = new StockListViewModel(stock);
                 _stockData.Add(StockDataModel);
+                _totalReturn += stock.ReturnInvestment;
             }
-            
+            OnPropertyChanged(nameof(TotalReturn));
         }
 
-        private void GetStocks()
+
+       
+        private void GetStocks() //never used? (cause it ain't async)
         {
             _stockData.Clear();
 
@@ -77,7 +80,7 @@ namespace MVVMSettings.MVVM.ViewModels
             OnPropertyChanged(nameof(TotalReturn));
         }
 
-        private void UpdateCurrentPrice()
+        private void UpdateCurrentPrice() //also never used (cause it ain't async)
         {
             CurrentDataAPI currentData = new CurrentDataAPI();
 
