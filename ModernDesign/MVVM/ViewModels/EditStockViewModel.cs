@@ -2,9 +2,12 @@
 using ModernDesign.MVVM.ViewModels;
 using ModernDesign.Stores;
 using MVVMSettings.MVVM.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace MVVMSettings.MVVM.ViewModels
 {
@@ -104,8 +107,8 @@ namespace MVVMSettings.MVVM.ViewModels
 
             EditStockCommand = new EditStockCommand(this, messageStore);
             DeleteStockCommand = new DeleteStockCommand(this, messageStore);
-            
-            UpdateStocks();
+
+            InitializeAsync(); //NEVER CALLED???
 
         }
 
@@ -130,11 +133,18 @@ namespace MVVMSettings.MVVM.ViewModels
             
         }
 
-        public void UpdateStocks()
+        private async void InitializeAsync()
+        {
+            Console.WriteLine("we before the wait");
+            await UpdateStocks();
+            Console.WriteLine("we past the wait");
+        }
+
+        public async Task UpdateStocks()
         {
             _stockData.Clear();
-
-            foreach (StockDataModel stock in _stocksList.GetAllStockData())
+            IEnumerable<StockDataModel> stocks = await _stocksList.GetAllStockDataAsync();
+            foreach (StockDataModel stock in stocks)
             {
                 StockListViewModel StockDataModel = new StockListViewModel(stock);
                 _stockData.Add(StockDataModel);
