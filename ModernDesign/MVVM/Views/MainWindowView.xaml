@@ -8,18 +8,22 @@
              xmlns:views="clr-namespace:MVVMSettings.MVVM.Views"
              xmlns:viewsModern="clr-namespace:ModernDesign.MVVM.Views"
              
+             
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent"
              Foreground="White"
-             FontSize="18">
+             FontSize="18"
+             >
+
+    
 
 
     <Border Background="#272537"
     CornerRadius="10">
-        
-        
-        
+
+
         <Grid>
 
             <Grid.Resources>
@@ -56,19 +60,16 @@
 
 
             <TextBlock Text="Stock Investments Tracker"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               Foreground="White"
-               FontSize="26"
-               Margin="20 0 0 0"
-               FontFamily="/Fonts/#Poppings"
-               Grid.Column="1"/>
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           Foreground="White"
+           FontSize="26"
+           Margin="20,0,0,0"
+           FontFamily="/Fonts/#Poppins"
+           Grid.Column="1"/>
 
             
-
-
-
-
+         
             <StackPanel Grid.Row="2">
                 <RadioButton Content="Home"
                      Height="50"

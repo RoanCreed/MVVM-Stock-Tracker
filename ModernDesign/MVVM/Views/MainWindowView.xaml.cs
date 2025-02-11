@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace MVVMSettings.MVVM.Views
 {
@@ -11,6 +13,8 @@ namespace MVVMSettings.MVVM.Views
         {
             InitializeComponent();
         }
+
+        
 
 
     }

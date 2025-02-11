@@ -6,6 +6,7 @@
         xmlns:viewModels="clr-namespace:MVVMSettings.MVVM.ViewModels"
         xmlns:views="clr-namespace:MVVMSettings.MVVM.Views"
         
+        
         mc:Ignorable="d"
         Height="600" Width="1000"
         WindowStyle="None"
@@ -17,8 +18,50 @@
 
     <Grid MaxHeight="600" MaxWidth="1000">
 
+        <views:MainWindowView Loaded="MainWindowView_Loaded"/>
 
-        <views:MainWindowView/>
+        <Grid VerticalAlignment="Top" Height="26" Background="Transparent" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+
+            <!-- Minimize Button -->
+            <Button 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Width="40" 
+                    Height="25" 
+                    Click="MinimizeButton_Click" 
+                    Margin="0,1,42,0"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderThickness="0"
+                    >
+                <Button.Content>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="12" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button.Content>
+
+            </Button>
+
+            <!-- Exit Button -->
+            <Button
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Margin="0,1,0,0"
+                    Width="40" 
+                    Height="25" 
+                    Click="ExitButton_Click"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="0">
+                <Button.Content>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="14" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+
+
+        </Grid>
+        
+        
+       
 
     </Grid>
     
